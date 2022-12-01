@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=\, initial-scale=1.0" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Pokemon API</title>
 		<link rel="stylesheet" href="./styles/style.css" />
 		<link rel="stylesheet" href="./styles/adaptive.css" />
@@ -14,8 +14,9 @@
 		<nav>
 			<h2 class="logo">Pokemons</h2>
 			<div class="nav__right-block">
-				<button class="search-btn">Search</button>
-				<button class="favorites-btn">Favorites</button>
+				<a href="./favorites.html">
+					<button class="favorites-btn">Favorites</button>
+				</a>
 			</div>
 		</nav>
 
@@ -24,9 +25,85 @@
 		<!-- content start  -->
 
 		<main>
+			<div class="main__header">
+				<div class="sort-select">
+					<h3 class="sort-title">
+						Сортировать
+						<img
+							class="down-arrow"
+							src="./images/down-arrow.png"
+							alt=""
+							width="23"
+						/>
+					</h3>
+					<ul class="sort-select__list">
+						<li class="sort-select__list-item" id="none">Сбросить</li>
+						<li class="sort-select__list-item" id="name(a-z)">Name(a < z)</li>
+						<li class="sort-select__list-item" id="name(z-a)">Name(z < a)</li>
+					</ul>
+				</div>
+				<div class="filter-select" a>
+					<h3 class="filter-title">
+						Вывести
+						<img
+							class="down-arrow"
+							src="./images/down-arrow.png"
+							alt=""
+							width="23"
+						/>
+					</h3>
+					<ul class="filter-select__list"></ul>
+				</div>
+				<div style="display: flex; justify-content: center">
+					<input type="number" value="20" class="limit-render-input" />
+					<button class="limit-render-button">render</button>
+				</div>
+				<div style="display: flex; justify-content: center">
+					<input
+						class="search-input"
+						placeholder="Search..."
+						autocomplete="on"
+						type="text"
+						name=""
+						id=""
+					/>
+					<button class="search-btn">Search</button>
+				</div>
+			</div>
+			<div class="pagination-block">
+				<img
+					class="prev-page_btn"
+					width="40"
+					src="./images/pagination-arrow.png"
+					alt=""
+				/>
+				<input type="number" class="page-input" />
+				<img
+					class="next-page_btn"
+					width="40"
+					src="./images/pagination-arrow.png"
+					alt=""
+				/>
+			</div>
 			<div class="container"></div>
 		</main>
 
+		<div class="modal">
+			<div class="pokemon-detail">
+				<img
+					src="./images/close.png"
+					alt=""
+					width="30"
+					class="modal-close__btn"
+				/>
+				<div class="pokemon-detail__body"></div>
+			</div>
+		</div>
+
+		<!-- scripts start  -->
+
 		<script src="./js/main.js"></script>
+
+		<!-- scripts end -->
 	</body>
 </html>
