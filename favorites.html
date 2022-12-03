@@ -9,7 +9,31 @@
 		<link rel="stylesheet" href="./styles/adaptive.css" />
 	</head>
 	<body>
-		<div class="favorites-container"></div>
+		<nav>
+			<h2 class="logo">Pokemons</h2>
+			<div class="nav__right-block">
+				<a class="favorites-btn" href="./index.html">Go to back</a>
+			</div>
+		</nav>
+		<main class="favorites-main">
+			<h1 class="favorites-logo">Favorites</h1>
+			<div class="clear-localStorage-block">
+				<button class="clear-localStorage-btn">Clear favorites</button>
+			</div>
+			<div class="favorites-container"></div>
+		</main>
+
+		<div class="modal">
+			<div class="pokemon-detail">
+				<img
+					src="./images/close.png"
+					alt=""
+					width="30"
+					class="modal-close__btn"
+				/>
+				<div class="pokemon-detail__body"></div>
+			</div>
+		</div>
 		<script src="./js/favorites.js"></script>
 	</body>
 </html>

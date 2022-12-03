@@ -1,0 +1,383 @@
+@media all and (max-width: 1441px) {
+  .container {
+    width: 100vw;
+    gap: 4.7vw;
+    justify-content: center;
+  }
+
+}
+
+@media all and (max-width: 1401px) {
+
+  .right-block {
+    width: 40vw;
+  }
+
+  .sort-select {
+    width: 250px;
+  }
+
+  .search-input {
+    width: 250px;
+  }
+
+  .search-btn {
+    width: 120px;
+    font-size: 18px;
+  }
+}
+
+@media all and (max-width: 1301px) {
+
+  .right-block {
+    width: 47vw;
+  }
+
+  .main__header {
+    width: 90vw;
+  }
+}
+
+@media all and (max-width: 1201px) {
+
+  .sort-select {
+    widows: 230px;
+  }
+
+  .search-input {
+    width: 230px;
+  }
+
+  .card {
+    padding: 30px 30px 45px;
+  }
+
+  .pokemon-name {
+    font-size: 20px;
+  }
+
+  .pokemon-element {
+    font-size: 15px;
+  }
+
+  .addPokemonToFavorites-btn {
+    width: 30px;
+    height: 30px;
+  }
+
+  .removePokemonInFavorites-btn {
+    width: 30px;
+    height: 30px;
+  }
+
+  .pokemon-image {
+    width: 130px;
+    height: 150px;
+  }
+
+  .pokemon-images {
+    height: 155px;
+  }
+
+}
+
+@media all and (max-width: 1101px) {
+
+  .main__header {
+    width: 70vw;
+    flex-wrap: wrap-reverse;
+    justify-content: space-between;
+  }
+
+  .right-block {
+    width: 100%;
+  }
+
+  .sort-select {
+    width: 330px;
+    margin-top: 30px;
+  }
+
+  .filter-select {
+    width: 330px;
+    margin-top: 30px;
+  }
+
+  .search-input {
+    width: 300px;
+    /* margin-bottom: 30px; */
+  }
+
+  .search-btn {
+    width: 150px;
+    /* margin-bottom: 30px; */
+  }
+
+  .card {
+    width: 20vw;
+  }
+
+  .pokemon-name {
+    font-size: 26px;
+  }
+
+  .pokemon-element {
+    font-size: 20px;
+  }
+
+  .addPokemonToFavorites-btn {
+    width: 39px;
+    height: 39px;
+  }
+
+  .removePokemonInFavorites-btn {
+    width: 39px;
+    height: 39px;
+  }
+
+}
+
+@media all and (max-width: 951px) {
+
+  .main__header {
+    width: 85vw;
+  }
+
+  .sort-select {
+    width: 300px;
+  }
+
+  .filter-select {
+    width: 300px;
+  }
+
+  .search-input {
+    width: 280px;
+  }
+}
+
+@media all and (max-width: 901px) {
+
+  .pokemon-image {
+    width: 120px;
+    height: 130px;
+  }
+
+  .pokemon-images {
+    height: 135px;
+  }
+
+}
+
+@media all and (max-width: 816px) {
+  .pokemon-images {
+    width: 36vw;
+    /* width: 20vw; */
+    /* flex-direction: column; */
+    /* align-items: center; */
+  }
+}
+
+@media all and (max-width: 721px) {
+
+  nav {
+    padding: 0 50px;
+  }
+
+  .sort-select {
+    width: 270px;
+  }
+
+  .filter-select {
+    width: 270px;
+  }
+
+  .search-input {
+    width: 230px;
+  }
+
+  .addPokemonToFavorites-btn {
+    width: 30px;
+    height: 30px;
+  }
+
+  .removePokemonInFavorites-btn {
+    width: 30px;
+    height: 30px;
+  }
+
+  .container {
+    gap: 8vw;
+  }
+
+  .card {
+    width: 25vw;
+  }
+
+  .pokemon-detail {
+    width: 80vw;
+  }
+
+  .pokemon-image {
+    width: 155px;
+    height: 150px;
+  }
+
+  .pokemon-images {
+    width: 50vw;
+    height: 150px;
+  }
+}
+
+@media all and (max-width: 651px) {
+
+  .filter-select {
+    width: 220px;
+  }
+
+  .sort-select {
+    width: 220px;
+  }
+
+  .search-input {
+    width: 200px;
+  }
+
+  .search-btn {
+    width: 100px;
+    background: #3D3E40;
+    padding: 0;
+  }
+
+  .pokemon-images {
+    width: 50vw;
+    height: 150px;
+  }
+
+}
+
+@media all and (max-width: 561px) {
+
+  .limit-render-input {
+    width: 60px;
+  }
+
+  .limit-render-button {
+    width: 60px;
+    font-size: 16px;
+  }
+
+  .filter-select {
+    width: 195px;
+  }
+
+  .sort-select {
+    width: 195px;
+  }
+
+}
+
+@media all and (max-width: 501px) {
+
+  .search-btn {
+    width: 70px;
+    font-size: 0;
+    background: #3D3E40 url(../images/search.png) no-repeat;
+    background-size: 50% 90%;
+    background-position: 50%;
+
+  }
+
+  .card {
+    width: 50vw;
+  }
+
+  .addPokemonToFavorites-btn {
+    width: 40px;
+    height: 40px;
+  }
+
+  .removePokemonInFavorites-btn {
+    width: 40px;
+    height: 40px;
+  }
+
+  .favorites-btn {
+    padding: 5px 30px;
+  }
+
+}
+
+@media all and (max-width: 471px) {
+
+  nav {
+    padding: 0 20px;
+  }
+
+  .favorites-btn {
+    padding: 5px 20px;
+    font-size: 16px;
+  }
+
+  .main__header {
+    flex-direction: column-reverse;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 14px;
+  }
+
+  .right-block {
+    width: 87vw;
+    margin: auto;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  .limit-render-block {
+    margin-bottom: 13px;
+  }
+
+  .sort-select {
+    width: 350px;
+    margin: 0;
+  }
+
+  .filter-select {
+    width: 350px;
+    margin: 0;
+  }
+
+  .search-input {
+    width: 71vw;
+    height: 40px;
+  }
+
+  .limit-render-input {
+    height: 40px;
+    width: 80px;
+  }
+
+  .limit-render-button {
+    height: 40px;
+    width: 70px;
+  }
+
+}
+
+@media all and (max-width: 361px) {
+  .card {
+    width: 90vw;
+    margin-bottom: 20px;
+    border-radius: 0;
+  }
+
+  .card:hover {
+    transform: translateY(0px);
+    box-shadow: 0 25px 50px -15px rgb(0, 255, 0);
+  }
+
+  .detail-btn {
+    border-radius: 0;
+  }
+
+}

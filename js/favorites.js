@@ -1,79 +1,160 @@
-let container = document.querySelector('.favorites-container')
+let API = `https://pokeapi.co/api/v2/`
 
-function getFavorites() {
+let container = document.querySelector('.favorites-container')
+let modal = document.querySelector('.modal')
+let closeModalBtn = document.querySelector('.modal-close__btn')
+let pokemonInfoBody = document.querySelector('.pokemon-detail__body')
+let clearBtn = document.querySelector('.clear-localStorage-btn')
+
+clearBtn.addEventListener('click', () => {
+	let data = getPokemonFromStorage()
+	console.log(data)
+	data = []
+	setPokemonStorage(data)
+	render()
+})
+
+function setPokemonStorage(favorites) {
+	localStorage.setItem('favorites-data', JSON.stringify(favorites))
+}
+
+function getPokemonFromStorage() {
 	let favorites = JSON.parse(localStorage.getItem('favorites-data'))
 	return favorites
 }
 
-let pokemons = getFavorites()
-
-let data = unique(pokemons)
-
-function unique(arr) {
-	let result = []
-
-	for (let pokemon of arr) {
-		console.log(pokemon.id)
-		if (!result.includes(pokemon.id)) {
-			result.push(pokemon)
-			console.log(pokemon)
-		}
-	}
-
-	return result
-}
+window.addEventListener('DOMContentLoaded', render)
 
 function render() {
-	data
-		? data.forEach(item => {
-				// item.id == item.id
-				// 	? null
-				// :
-				container.innerHTML += `<div class="card" id=${item.id}>
-	<img
-		class="pakemon-image"
-		src="${item.sprites.front_default}"
-		alt="qwerty"
-	/>
-	<div class="bottom-block">
-  <div>
-  <h3 class="pokemon-name">${item.name}</h3>
-  <h3 class="pokemon-element">${item.types[0].type.name}</h3>
-  </div>
-    <div>
-		<svg
-			xmlns="http://www.w3.org/2000/svg"
-			width="30px"
-			height="30px"
-			fill="currentColor"
-			class="bi addPokemonToFavorites-btn"
-			viewBox="0 0 16 16"
-			id=${item.id}
-		>
-			<path
-				d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z"
-			/>
-		</svg>
-		<svg
-			xmlns="http://www.w3.org/2000/svg"
-			width="30px"
-			height="30px"
-			fill="currentColor"
-			class="bi removePokemonInFavorites-btn"
-			viewBox="0 0 16 16"
-			id=${item.id}
-		>
-			<path
-				fill-rule="evenodd"
-				d="M2 15.5V2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.74.439L8 13.069l-5.26 2.87A.5.5 0 0 1 2 15.5zm8.854-9.646a.5.5 0 0 0-.708-.708L7.5 7.793 6.354 6.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z"
-			/>
-		</svg>
-    </div>
-	</div>
-</div>
-`
+	let data = getPokemonFromStorage()
+
+	container.innerHTML = ''
+
+	data.length
+		? data.forEach(pokemon => {
+				container.innerHTML += `
+                  <div class="card" id="${pokemon.id}">
+                    <img
+                    class="pakemon-image"
+                    src="${pokemon.sprites.front_default}"
+                    alt="${pokemon.name}"
+                    />
+                    <div class="bottom-block">
+                      <div>
+              <h3 class="pokemon-name" id="${pokemon.id}">${pokemon.name}</h3>
+              <h3 class="pokemon-element">
+              element: ${pokemon.types[0].type.name}
+              </h3>
+                    </div>
+                    <div>
+                    <button class="addPokemonToFavorites-btn" style="display: none;" id="${pokemon.name}"></button>
+                    <button
+                    class="removePokemonInFavorites-btn" style="display: block;"
+                    id="${pokemon.name}"
+                    ></button>
+                    </div>
+                    </div>
+                    <button id="${pokemon.name}" class="detail-btn">Info</button>
+                  </div>
+                  `
 		  })
-		: null
+		: ((container.innerHTML += `<div class="null">
+    <h2>Тут ничего нету</h2>
+    </div>`),
+		  clearBtn.setAttribute('style', 'display: none;'))
+
+	container.querySelectorAll('.addPokemonToFavorites-btn').forEach(item => {
+		// checkPokemonInStorage(item)
+		item.addEventListener('click', addPokemonToFavorites)
+	})
+	container.querySelectorAll('.removePokemonInFavorites-btn').forEach(item => {
+		item.addEventListener('click', deletePokemonInFavorites)
+	})
+	container.querySelectorAll('.detail-btn').forEach(item => {
+		item.addEventListener('click', detailPokemon)
+	})
 }
 
-render()
+// function checkPokemonInStorage(btn) {
+// 	let unFavoriteBtn = document.querySelectorAll('.removePokemonInFavorites-btn')
+// 	let data = getPokemonFromStorage()
+// 	data.forEach(pokemon => {
+// 		if (btn.id == pokemon.name) {
+// 			btn.setAttribute('style', 'display:none;')
+// 			unFavoriteBtn.forEach(item => {
+// 				if (item.id == btn.id) {
+// 					item.setAttribute('style', 'display:block;')
+// 				}
+// 			})
+// 		}
+// 	})
+// }
+
+async function addPokemonToFavorites(e) {
+	let data = getPokemonFromStorage()
+
+	let pokemonId = e.target.id
+
+	let response = await fetch(`${API}pokemon/${pokemonId}`)
+	let pokemon = await response.json()
+	data.push(pokemon)
+
+	setPokemonStorage(data)
+
+	let unfavoriteBtn = document.querySelectorAll('.removePokemonInFavorites-btn')
+
+	unfavoriteBtn.forEach(item => {
+		if (item.id == pokemonId) {
+			e.target.setAttribute('style', 'display: none;')
+			item.setAttribute('style', 'display: block;')
+		}
+	})
+}
+
+// delete in favorites
+
+function deletePokemonInFavorites(e) {
+	let data = getPokemonFromStorage()
+	let pokemonId = e.target.id
+
+	data.splice(pokemonId, 1)
+	setPokemonStorage(data)
+
+	let favoriteBtn = document.querySelectorAll('.addPokemonToFavorites-btn')
+
+	favoriteBtn.forEach(item => {
+		if (item.id == pokemonId) {
+			e.target.setAttribute('style', 'display: none;')
+			item.setAttribute('style', 'display: block;')
+		}
+	})
+}
+
+function detailPokemon(e) {
+	let name = e.target.id
+	fetch(`${API}pokemon/${name}`)
+		.then(res => res.json())
+		.then(pokemon => {
+			modal.setAttribute('style', 'opacity: 1; z-index:1; transition: .3s;')
+			document
+				.querySelector('main')
+				.setAttribute('style', 'transform:scale(.980); transition:.5s;')
+			pokemonInfoBody.innerHTML = `
+      <div class="pokemon-images">
+      <img class="pokemon-image" src=${pokemon.sprites.front_default} alt="${pokemon.name}" width=180  />
+      <img class="pokemon-image" src=${pokemon.sprites.back_default}  alt="${pokemon.name}" width=180  />
+      </div>
+      <h5 class="name">Name: <span>${pokemon.name}</span></h5>
+      <h5 class="element">Element: <span> ${pokemon.types[0].type.name}</span></h5>
+      <h5 class="height">Height:<span> ${pokemon.height}m</span></h5>
+      <h5 class="weight">Weight:<span> ${pokemon.weight}kg</span></h5>
+      <h5 class="expirience">Experience: <span>${pokemon.base_experience}Exp</span></h5>`
+		})
+}
+
+closeModalBtn.addEventListener('click', () => {
+	modal.setAttribute('style', 'opacity: 0; z-index:-10; transition: .3s;')
+	document
+		.querySelector('main')
+		.setAttribute('style', 'transform:scale(1); transition:.2s;')
+})

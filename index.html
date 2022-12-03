@@ -14,9 +14,7 @@
 		<nav>
 			<h2 class="logo">Pokemons</h2>
 			<div class="nav__right-block">
-				<a href="./favorites.html">
-					<button class="favorites-btn">Favorites</button>
-				</a>
+				<a class="favorites-btn" href="./favorites.html">Favorites</a>
 			</div>
 		</nav>
 
@@ -29,12 +27,7 @@
 				<div class="sort-select">
 					<h3 class="sort-title">
 						Сортировать
-						<img
-							class="down-arrow"
-							src="./images/down-arrow.png"
-							alt=""
-							width="23"
-						/>
+						<img class="down-arrow" src="./images/down-arrow.png" width="23" />
 					</h3>
 					<ul class="sort-select__list">
 						<li class="sort-select__list-item" id="none">Сбросить</li>
@@ -45,29 +38,24 @@
 				<div class="filter-select" a>
 					<h3 class="filter-title">
 						Вывести
-						<img
-							class="down-arrow"
-							src="./images/down-arrow.png"
-							alt=""
-							width="23"
-						/>
+						<img class="down-arrow" src="./images/down-arrow.png" width="23" />
 					</h3>
 					<ul class="filter-select__list"></ul>
 				</div>
-				<div style="display: flex; justify-content: center">
-					<input type="number" value="20" class="limit-render-input" />
-					<button class="limit-render-button">render</button>
-				</div>
-				<div style="display: flex; justify-content: center">
-					<input
-						class="search-input"
-						placeholder="Search..."
-						autocomplete="on"
-						type="text"
-						name=""
-						id=""
-					/>
-					<button class="search-btn">Search</button>
+				<div class="right-block">
+					<div class="limit-render-block">
+						<input type="number" value="20" class="limit-render-input" />
+						<button class="limit-render-button">render</button>
+					</div>
+					<div style="display: flex; justify-content: center">
+						<input
+							class="search-input"
+							placeholder="Search..."
+							autocomplete="on"
+							type="text"
+						/>
+						<button class="search-btn">Search</button>
+					</div>
 				</div>
 			</div>
 			<div class="pagination-block">
@@ -75,14 +63,12 @@
 					class="prev-page_btn"
 					width="40"
 					src="./images/pagination-arrow.png"
-					alt=""
 				/>
 				<input type="number" class="page-input" />
 				<img
 					class="next-page_btn"
 					width="40"
 					src="./images/pagination-arrow.png"
-					alt=""
 				/>
 			</div>
 			<div class="container"></div>
@@ -90,12 +76,7 @@
 
 		<div class="modal">
 			<div class="pokemon-detail">
-				<img
-					src="./images/close.png"
-					alt=""
-					width="30"
-					class="modal-close__btn"
-				/>
+				<img src="./images/close.png" width="30" class="modal-close__btn" />
 				<div class="pokemon-detail__body"></div>
 			</div>
 		</div>
