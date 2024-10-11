@@ -1,6 +1,6 @@
 @media all and (max-width: 1441px) {
   .container {
-    width: 100vw;
+    width: 100%;
     gap: 4.7vw;
     justify-content: center;
   }
